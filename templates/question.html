@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوالات</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .question-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        button[type="submit"] {
+            background: #00796b;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="question-card">
+        <h2>{{ question.text }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for answer in answers %}
+                <label>
+                    <input type="radio" name="answer" value="{{ answer.pk }}">
+                    {{ answer.text }}
+                </label>
+            {% endfor %}
+            <button type="submit">سوال بعدی</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

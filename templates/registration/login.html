@@ -1,0 +1,8 @@
+<!-- quiz/templates/quiz/login.html -->
+<h2>لطفا وارد شوید</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!-- فرم لاگین ساده -->
+    <button type="submit">ورود</button>
+</form>
