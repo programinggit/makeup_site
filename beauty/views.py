@@ -13,12 +13,12 @@ class LandingPageView(TemplateView):
 class QuestionView(TemplateView):
     template_name = "question.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        question = Question.objects.get(pk=self.kwargs['pk'])
-        context['question'] = question
-        context['answers'] = question.answers.all()  # دسترسی به پاسخ‌ها از طریق related_name
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     question = Question.objects.get(step=self.kwargs['step'])
+    #     context['question'] = question
+    #     context['answers'] = question.answers.all()  # دسترسی به پاسخ‌ها از طریق related_name
+    #     return context
 
 
     def post(self, request, *args, **kwargs):
